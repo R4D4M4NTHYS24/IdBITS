@@ -46,8 +46,8 @@
     
 </head>
 
-<body class="grey lighten-4"  onload="generar_qr() , consultar_balance() ">
-<!-- onload="consultar_balance()" -->
+
+<!-- onload="consultar_balance()"<body class="grey lighten-4"  onload="generar_qr() , consultar_balance() "> -->
 
     <!-- php file to sesion start --> 
     <?php include 'php/sesion.php'; ?>
@@ -81,8 +81,8 @@
                                         <div class="card-content">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <span class="card-title text-center"><b>Firma Electrónica:</b></span>
-                                                    <p class="text-center" style="color:#848484">Así se verá tu firma en IdBITS</p>
+                                                    <span class="card-title text-center"><b>Novedad</b></span>
+                                                    <p class="text-center" style="color:#848484">Curso para modelos de negocios en blockchain</p>
                                                     <br>
                                                     <td style="width: 224.45pt; border: solid black 1.0pt; border-top: none; padding: 0cm 5.4pt 0cm 5.4pt;" colspan="2" width="299">
                                                         <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;"><?php echo $NAME;?></span></strong></p>
@@ -118,20 +118,20 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong class="card-title mb-3">Cursos</strong>
+                                        <strong class="card-title mb-3">Curso</strong>
                                     </div>
                                     <div class="card-body">
                                         <div class="mx-auto d-block">
                                             <img class="rounded-circle mx-auto d-block" height="100" width="100" src="Images/icons/firma.png" alt="Card image cap">
-                                            <h5 class="text-sm-center mt-2 mb-1">10 Cursos</h5>
+                                            <h5 class="text-sm-center mt-2 mb-1">Solidity</h5>
                                         </div>
                                         <hr>
                                         <div class="card-text text-sm-center">
                                            
-                                                <a class="btn btn-lg btn-info btn-block" href="cursos.php">Ingresar</a>
+                                                <a class="btn btn-lg btn-info btn-block" href="home2.php">Ingresar</a>
                                                 
                                                 <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                            </button>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -139,18 +139,18 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong class="card-title mb-3">Retos</strong>
+                                        <strong class="card-title mb-3">Curso</strong>
                                     </div>
                                     <div class="card-body">
                                         <div class="mx-auto d-block">
                                             <img class="rounded-circle mx-auto d-block" height="100" width="100" src="Images/icons/idea.png" alt="Card image cap">
-                                            <h5 class="text-sm-center mt-2 mb-1">5 Retos</h5>
+                                            <h5 class="text-sm-center mt-2 mb-1">Lean canvast con blockchain</h5>
                                         </div>
                                         <hr>
                                         <div class="card-text text-sm-center">
-                                        <a class="btn btn-lg btn-info btn-block" href="retos.php">Ingresar</a>
+                                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block" onclick="click_macro()">
                                                
-                                          
+                                                <span id="payment-button-amount">Ingresar</span>
                                                 <span id="payment-button-sending" style="display:none;">Sending…</span>
                                             </button>
                                         </div>
@@ -160,18 +160,18 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong class="card-title mb-3">Oportunidades</strong>
+                                        <strong class="card-title mb-3">Curso</strong>
                                     </div>
                                     <div class="card-body">
                                         <div class="mx-auto d-block">
                                             <img class="rounded-circle mx-auto d-block" height="100" width="100" src="Images/icons/documentos.png" alt="Card image cap">
-                                            <h5 class="text-sm-center mt-2 mb-1">3 Oportunidades</h5>
+                                            <h5 class="text-sm-center mt-2 mb-1">RSK</h5>
                                         </div>
                                         <hr>
                                         <div class="card-text text-sm-center">
-                                        <a class="btn btn-lg btn-info btn-block" href="oportunidades.php">Ingresar</a>
+                                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block" onclick="click_premiun()">
                                            
-                                                
+                                                <span id="payment-button-amount">Ingresar</span>
                                                 <span id="payment-button-sending" style="display:none;">Sending…</span>
                                             </button>
                                         </div>
@@ -179,6 +179,53 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong class="card-title mb-3">Curso</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mx-auto d-block">
+                                            <img class="rounded-circle mx-auto d-block" height="100" width="100" src="Images/icons/firma.png" alt="Card image cap">
+                                            <h5 class="text-sm-center mt-2 mb-1">Solidity</h5>
+                                        </div>
+                                        <hr>
+                                        <div class="card-text text-sm-center">
+                                           
+                                                <a class="btn btn-lg btn-info btn-block" href="home2.php">Ingresar</a>
+                                                
+                                                <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong class="card-title mb-3">Curso</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mx-auto d-block">
+                                            <img class="rounded-circle mx-auto d-block" height="100" width="100" src="Images/icons/idea.png" alt="Card image cap">
+                                            <h5 class="text-sm-center mt-2 mb-1">Lean canvast con blockchain</h5>
+                                        </div>
+                                        <hr>
+                                        <div class="card-text text-sm-center">
+                                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block" onclick="click_macro()">
+                                               
+                                                <span id="payment-button-amount">Ingresar</span>
+                                                <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>  
+
+
                         <div class="sufee-alert alert with-close alert-success alert-dismissible fade show" id="alert_recarga" style="display:none;">
                             <span class="badge badge-pill badge-success">Transacción Exitosa</span>
                             Su firma fue recargada exitosamente
@@ -201,8 +248,7 @@
             <!-- END MAIN CONTENT-->
 
 
-            <!-- pulse button starts -->
-            
+           
       </main>
             
  <!-- Compiled and minified JavaScript -->

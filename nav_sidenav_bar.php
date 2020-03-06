@@ -56,15 +56,13 @@
                
                 <ul class="collapsible">
                   <li>
-                  <div class="collapsible-header" > <a class="modal-trigger waves-effect waves-teal"href="#modal_new_contract"  style="width: 350px; color:black;" ><i class="material-icons">add_circle</i><b>Nuevo contrato</b></a> </div>
+                  <div class="collapsible-header" > <a href="home.php" style="width: 350px; color:black;" ><i class="material-icons">account_balance_wallet</i>   Mi ID</a> </div>
                   </li>
                 </ul> 
 
-                <li><div class="divider"></div></li>
-
                 <ul class="collapsible">
                   <li>
-                  <div class="collapsible-header" > <a href="home.php" style="width: 350px; color:black;" ><i class="material-icons">home</i>Mis contratos</a> </div>
+                  <div class="collapsible-header" > <a href="verificar_firma.php" style="width: 350px; color:black;" ><i class="material-icons">search</i>Verificar ID</a> </div>
                   </li>
                 </ul> 
 
@@ -74,17 +72,7 @@
                   </li>
                 </ul>
 
-                <ul class="collapsible">
-                  <li>
-                  <div class="collapsible-header" > <a href="recargar_firma.php" style="width: 350px; color:black;" ><i class="material-icons">account_balance_wallet</i>   Recargar Firma</a> </div>
-                  </li>
-                </ul> 
 
-                <ul class="collapsible">
-                  <li>
-                  <div class="collapsible-header" > <a href="verificar_firma.php" style="width: 350px; color:black;" ><i class="material-icons">search</i>Verificar Firmas</a> </div>
-                  </li>
-                </ul> 
 
                 <!-- <ul class="collapsible">
                 <li>

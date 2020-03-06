@@ -81,7 +81,7 @@
                                 <div class="col s12 center">
                         
                               <form action="php/nuevo_contacto.php" method="POST"  >
-                                    <h2>Buscar Firma de Usuario por correo electrónico</h2> 
+                                    <h2>Buscar ID de Usuario por correo electrónico</h2> 
 
                                   <div class="input-field col s12 row" id="mail_div" name="mail_div" style="display:block;">
                                     <i class="material-icons prefix">mail</i>
