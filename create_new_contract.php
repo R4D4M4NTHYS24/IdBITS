@@ -46,7 +46,7 @@
                               <div class="row" id="lista">                             
                                 <div class="input-field col s12" >
                                   <select class="icons" id="select_employee" name="select_employee">
-                                    <option value="" disabled selected>Choose your option</option>              
+                                    <option value="" disabled selected>Buscar en lista de Contactos</option>              
                                   </select>
                                     <label>Seleccione Trabajador</label>
                                 </div>

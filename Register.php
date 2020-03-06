@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Solemne - Registro</title>
+<title>IdBITS - Registro</title>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Compiled and minified CSS -->
@@ -15,7 +15,7 @@
 
 </head>
 
-<body background="images/contract4.jpg" >
+<body background="images/IDwall.jpg" >
 
   <!-- Main Register Form starts -->
     <main>
@@ -25,7 +25,7 @@
           <div class="col s12 m6 l0  offset-m3" >
             <div class="card">
               <div class="card-content">
-                <span  class="card-title" style="font-size:36px;"><img src="images/contract.png"  height="50" width="50"><br><b>Solemne</b></span>
+                <span  class="card-title" style="font-size:36px;"><img src="images/unlock-id.png"  height="50" width="50"><br><b>IdBITS</b></span>
                   <h6 style="color: grey;">Crea una cuenta</h6><br>
 
                       <div class="row">
@@ -46,7 +46,7 @@
                               <span class="helper-text" data-error="Por favor rellene este espacio" data-success=""></span>
                             </div> -->
 
-                            <div id="name_div" name="name_div" class="input-field col s12" style="display:none;">
+                            <div id="name_div" name="name_div" class="input-field col s12" style="display:block;">
                               <i class="material-icons prefix">portrait</i>
                               <input name="name" id="name" type="text" class="validate" required>
                               <label for="name" class="" id="nombre">Nombre y Apellido</label>
@@ -57,6 +57,13 @@
                               <i class="material-icons prefix">mail_outline</i>
                               <input name="mail" id="mail" type="email" class="validate" required>
                               <label for="mail" class="email">Correo electrónico</label>
+                              <span class="helper-text" data-error="Por favor rellene este espacio" data-success=""></span>
+                            </div>
+
+                            <div id="pub_div" name="pub_div" class="input-field col s12" style="display:none;">
+                              <i class="material-icons prefix">portrait</i>
+                              <input name="pubkey" id="pubkey" type="text" class="validate" required>
+                              <label for="llave" class="" id="llave">Llave</label>
                               <span class="helper-text" data-error="Por favor rellene este espacio" data-success=""></span>
                             </div>
                                           
@@ -73,10 +80,18 @@
                               <label for="cpassword">Confirmar</label>
                               <span class="helper-text" data-error="Las contraseñas no coinciden" data-success=""></span>
                             </div>
-      
-                            <button class="btn waves-effect waves-light" type="submit" id="boton_register" name="action" onclick="crear_billetera()">Registrar
+
+                            <button class="btn waves-effect waves-light" type="submit" id="boton_register" name="action" style="display:none;">Registrar
                               <i class="material-icons right">send</i>
                             </button><br><br>
+                            
+                            <a class="btn waves-effect waves-light" id="boton_register" onclick="crear_billetera()">Registrar
+                              <i class="material-icons right">send</i>
+                            </a><br><br>       
+
+                            <div id=container>
+                            </div>
+
                         </form> 
                    
                           <span style="font-size:11px;"> Al crear la cuenta aceptas los <a  class="modal-trigger" href="#modal1">terminos y condiciones</a> y <a class="modal-trigger" href="#modal2">politicas de tratamiento de datos</a></span>
@@ -170,16 +185,16 @@
 
 <!-- verify that password and cpassword be the same word -->
   <script> 
-    var password = document.getElementById('password'), confirm_password = document.getElementById('cpassword');
+    var password = document.getElementById('password'), cpassword = document.getElementById('cpassword');
     function validatePassword() {
-      if (password.value != confirm_password.value) {
-        confirm_password.setCustomValidity('Passwords Don\'t Match');
+      if (password.value != cpassword.value) {
+        cpassword.setCustomValidity('Passwords Don\'t Match');
       } else {
-        confirm_password.setCustomValidity('');
+        cpassword.setCustomValidity('');
       }
     }
     password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword; 
+    cpassword.onkeyup = validatePassword; 
   </script>
 
 

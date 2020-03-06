@@ -1,0 +1,6 @@
+Cambiar botones doc_concretado por impresion.
+Hacer Deubugging de Consulta respecto a datos nuevos del contrato en docs.
+Revisar el swal al ingresar contraseña erronea en la parte de firma recibido.
+Agregar swal de carga mientras se ejecutan las transacciones.
+Agregar calculo automatico de pagos segun salario y periodo.
+Agregar QR al final del contrato y crear explorador de contratos.

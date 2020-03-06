@@ -1,14 +1,17 @@
+emisor = document.getElementById("emisor");
+receptor = document.getElementById("receptor");
+oficio = document.getElementById("oficio");
+salario = document.getElementById("salario");
+periodo = document.getElementById("periodo");
+lugar = document.getElementById("lugar");
+inicio = document.getElementById("inicio");
+horario = document.getElementById("horario");
+ciudad = document.getElementById("ciudad");
+duracion = document.getElementById("duracion");
+terminacion = document.getElementById("terminacion");
 function emitir_contrato(privateKeyUser, publicKeyUser) {
-    emisor = document.getElementById("emisor");
-    receptor = document.getElementById("receptor");
-    oficio = document.getElementById("oficio");
-    salario = document.getElementById("salario");
-    periodo = document.getElementById("periodo");
-    lugar = document.getElementById("lugar");
-    inicio = document.getElementById("inicio");
-    horario = document.getElementById("horario");
     console.log("emitiendo::::::::::::::::::::");
-    console.log(emisor.innerText, receptor.innerText, oficio.innerText, salario.innerText, periodo.innerText, lugar.innerText, horario.innerText);
+    console.log(emisor.innerText, receptor.innerText, oficio.innerText, salario.innerText, periodo.innerText, inicio.innerText, lugar.innerText, horario.innerText,duracion.innerText,terminacion.innerText,ciudad.innerText);
     contract.methods.saldo(publicKeyUser).call().then(saldo => {
         saldo.onload = verificar_saldo(saldo, privateKeyUser, publicKeyUser);
     })
@@ -25,7 +28,7 @@ function verificar_saldo(saldo, privateKeyUser, publicKeyUser) {
 function emision(privateKeyUser, publicKeyUser) {
     web3.eth.getTransactionCount(publicKeyUser, (err, txCount) => {
         //const data =contract.methods.newHash(nombre,cc,correo,fecha).encodeABI()
-        const data = contract.methods.nuevo_contrato(emisor.innerText, receptor.innerText, oficio.innerText, salario.innerText, periodo.innerText, inicio.innerText, lugar.innerText, horario.innerText).encodeABI();
+        const data = contract.methods.nuevo_contrato(emisor.innerText, receptor.innerText, oficio.innerText, salario.innerText, periodo.innerText, inicio.innerText, lugar.innerText, horario.innerText,duracion.innerText,terminacion.innerText,ciudad.innerText).encodeABI();
         //Build the transaction
         console.log(txCount)
         const txObject = {
@@ -92,7 +95,7 @@ function exito() {
 function sin_saldo() {
     swal({
         title: 'Sin saldo',
-        text: 'Debes recargar tu firma para emitir nuevos diplomas',
+        text: 'Debes recargar tu firma para emitir nuevas firmas',
         type: 'error',
         showCancelButton: true,
         confirmButtonColor: '#DD6B55',

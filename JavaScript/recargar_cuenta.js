@@ -1,3 +1,16 @@
+owner = document.getElementById("owner").innerText;
+creditos = document.getElementById("creditos");
+
+function consultar_balance() {
+    console.log("owner:" + owner);
+    contract.methods.saldo(owner).call().then(saldo => {
+        console.log("saldo:" + saldo);
+        creditos.innerHTML = "Te quedan "+ saldo + " firmas";
+    })
+
+
+}
+
 function recargar_cuenta(owner, valor_recarga) {
     console.log("Cuenta a Recagar: " + owner);
     console.log("Valor a Recargar: " + valor_recarga);

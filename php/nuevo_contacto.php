@@ -7,7 +7,6 @@ if (!isset($_SESSION["usuario"])) {
  include 'datauser.php'; 
 // definir los elementos que se recuperan del POST
 $contact_mail= $_POST["mail"];
-$contact_name=$_POST["name"];
 $reg_ID_from= $ID;
 $state=1;
 
@@ -18,7 +17,7 @@ try {
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
     $base->exec("SET CHARACTER SET utf8"); // se especifica que se está trabajando con caracteres UTF-8
     
-    $sql="SELECT * FROM REGISTER WHERE MAIL='$contact_mail'";
+    $sql="SELECT ID FROM REGISTER WHERE MAIL='$contact_mail'";
     $resultado=$base->prepare($sql); // se almacen el  objeto de tipo PDO statement que arroja $sql
     $resultado->execute (array());
 

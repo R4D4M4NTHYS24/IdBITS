@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solemne - Configuración</title>
+    <title>IdBITS - Configuración</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -40,7 +40,7 @@
             <nav class="transparent" >
               <div class="nav-wrapper">
                 <div class="col s12">
-                  <a href="home.php" class="breadcrumb"> Solemne</a>
+                  <a href="home.php" class="breadcrumb"> IdBITS</a>
                   <a href="#!" class="breadcrumb">Configuración de perfil</a>
                 </div>
               </div>
@@ -59,18 +59,18 @@
                   <!-- User Image starts -->    
 
                         <div class="col s12 m2 center">
-                          <a class = "modal-trigger" href="#modal1"><img class="circle" style="height: 140px; width: 115px; margin: auto;" src="uploads/<?php echo $ruta_img;?>"></a>
+                          <a class = "modal-trigger" href="#modal_imagen"><img class="circle" style="height: 140px; width: 115px; margin: auto;" src="uploads/<?php echo $ruta_img;?>"></a>
 
                             <!-- Modal Structure starts -->
 
-                                <div id="modal1" class="modal">
+                                <div id="modal_imagen" class="modal">
                                   <form action="php/datosImagen.php" method="POST" enctype="multipart/form-data">
                                     <div class="modal-content">
                                       <h4>Cambiar imagen de perfil</h4>                                 
                                       <input type="file" name="imagen" size="20">
                                     </div>
                                       <div class="modal-footer">
-                                        <input type="submit" class="modal-close waves-effect waves-green btn" value="Cambiar imagen">
+                                        <input type="submit" class="modal-close waves-effect waves-green btn"  onclick = "this.form.action = 'php/datosImagen.php'; this.form.submit()" value="Cambiar imagen">
                                       </div>
                                   </form> 
                                 </div>
@@ -79,7 +79,29 @@
                         </div>
 
                   <!-- User Image ends -->
-                
+
+                  <!-- User Sign starts -->    
+
+                  <div class="col s12 m2 center">
+                          <a class = "modal-trigger" href="#modal_firma"><img style="height: 140px; width: 115px; margin: auto;" src="firmas/<?php echo $ruta_firma;?>"></a>
+
+                            <!-- Modal Structure starts -->
+
+                                <div id="modal_firma" class="modal">
+                                  <form action="php/datosFirma.php" method="POST" enctype="multipart/form-data">
+                                    <div class="modal-content">
+                                      <h4>Cambiar Firma Manuscrita</h4>                                 
+                                      <input type="file" name="firma" size="20">
+                                    </div>
+                                      <div class="modal-footer">
+                                        <input type="submit" class="modal-close waves-effect waves-green btn" onclick = "this.form.action = 'php/datosFirma.php'; this.form.submit()" value="Cambiar firma">
+                                      </div>
+                                  </form> 
+                                </div>
+    
+                            <!-- Modal Structure ends -->
+                        </div>
+
 
                     <!-- Data User starts -->
 

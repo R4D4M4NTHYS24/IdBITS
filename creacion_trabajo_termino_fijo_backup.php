@@ -138,9 +138,22 @@
 
                               <div class="input-field col s12 m12 l6">
                                 <input name="salario" id="salario"  type="text" class="validate" required>
-                                <label for="salario" class="">Salario</label>
+                                <label for="salario" class="">Salario Mensual</label>
                                 <span class="helper-text" data-error="" data-success=""></span>
                               </div>
+
+                              <div class="row">                             
+                                  <div class="input-field col s12 m12 l6">
+                                    <select name="type_c" id="type_c" onchange="changeAction(this.value);">
+                                      <option value="" disabled selected>Elija el tipo de contrato</option>
+                                      <option value="1">Trabajo a Termino Fijo </option>
+                                      <option value="2">Trabajo a Termino Indefinido </option>
+                                      <option value="3">Trabajo por Duración de Obra o labor </option>
+                                      <option value="4">Prestación de Servicios</option>
+                                    </select>
+                                    <label>Tipo de Contrato</label>
+                                  </div>
+                                </div> 
 
                               <div class="input-field col s12 m12 l6">
                                 <input name="periodo" id="periodo"  type="text" class="validate" required>

@@ -1,4 +1,4 @@
-function decrypt_wallet() {
+function decrypt_wallet(rol) {
     passwordKey = document.getElementById("passwordkey").value;
     if (passwordKey == "") {
         console.log("Password Vacio");
@@ -7,7 +7,7 @@ function decrypt_wallet() {
     console.log("Desencriptando....");
     try {
         console.log(objeto_llave);
-        verificar_llave(objeto_llave, passwordKey)
+        verificar_llave(rol,objeto_llave, passwordKey)
     } catch (error) {
         console.log("Sin archivo");
         $('#alert_firma').show();
@@ -15,7 +15,7 @@ function decrypt_wallet() {
     console.log(passwordKey);
 }
 
-function verificar_llave(objeto_llave, passwordKey) {
+function verificar_llave(rol,objeto_llave, passwordKey) {
     try {
         wallet = web3.eth.accounts.decrypt(objeto_llave, passwordKey);
         privateKeyUser = wallet.privateKey;
@@ -23,9 +23,17 @@ function verificar_llave(objeto_llave, passwordKey) {
         console.log("Desencriptado completo.....................");
         console.log("llave privada: " + privateKeyUser);
         console.log("llave publica: " + publicKeyUser);
-        emitir_contrato(privateKeyUser, publicKeyUser);
-    } catch (error) {
-        clave_incorrecta();
+        if (rol==1){
+            firmar_contrato_recibido(privateKeyUser, publicKeyUser);
+        }
+        else {
+            emitir_contrato(privateKeyUser, publicKeyUser);
+        }
+    } 
+    catch (error) {
+        console.log("error******************")
+        console.log(error);
+        // clave_incorrecta();
     }
 }
 
@@ -38,7 +46,5 @@ function clave_incorrecta() {
         confirmButtonColor: '#DD6B55',
         confirmButtonText: 'Nueva Firma',
         // cancelButtonText: false
-    }).then((isConfirm) => {
-        window.location.replace("home.php");
     });
 }

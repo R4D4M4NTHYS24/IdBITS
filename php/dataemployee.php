@@ -1,7 +1,7 @@
 <?php
  // Extraer los datos del empleado para la creación del contrato
 
- $emp_name= $_POST["select_employee"];
+$emp_name= $_POST["select_employee"];
 
 
 

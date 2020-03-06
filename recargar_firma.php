@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solemne - Home</title>
+    <title>IdBITS - Home</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -46,7 +46,8 @@
     
 </head>
 
-<body class="grey lighten-4">
+<body class="grey lighten-4"  onload="generar_qr() , consultar_balance() ">
+<!-- onload="consultar_balance()" -->
 
     <!-- php file to sesion start --> 
     <?php include 'php/sesion.php'; ?>
@@ -75,12 +76,39 @@
                             <div class="col-lg-12">
                                 <h2 class="title-1 m-b-25">Recargar Firma</h2>
                                 <div class="col-lg-12">
-                                    <div class="card">
-                                        <div class="card-header">Ingrese la Firma que desea recargar</div>
-                                        <div class="card-body card-block">
-                                            <form id="myform">
-                                                <input id="myfile" name="file" type="file" />
-                                            </form>
+                                <div class="col-12">   
+                                    <div class="card hoverable">
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span class="card-title text-center"><b>Firma Electrónica:</b></span>
+                                                    <p class="text-center" style="color:#848484">Así se verá tu firma en IdBITS</p>
+                                                    <br>
+                                                    <td style="width: 224.45pt; border: solid black 1.0pt; border-top: none; padding: 0cm 5.4pt 0cm 5.4pt;" colspan="2" width="299">
+                                                        <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;"><?php echo $NAME;?></span></strong></p>
+                                                        <img style="height: 140px; width: 115px; margin: auto;" src="firmas/<?php echo $ruta_firma;?>">
+                                                        <p><span style="font-size: 10.5pt; line-height: 110%; color: black;">C.C. <?php echo $IDENT;?></span></p>
+                                                        <p><span style="font-size: 10.5pt; line-height: 110%; color: black;"><?php echo $MAIL;?></span></p>
+                                                        <p><span style="font-size: 10.5pt; line-height: 110%; color: black;"><?php echo $COMPANY;?></span></p>
+                                                        <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;"><?php echo $ADDRESS;?></span></strong></p>
+                                                        <p><span style="font-size: 10.5pt; line-height: 110%; color: black;">&nbsp;</span></p>
+                                                        <p><span style="font-size: 10.5pt; line-height: 110%; color: black;">Clave Publica:</span></p>
+                                                        <p id="owner"><?php echo $PBK;?></p>
+                                                    </td>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h2 id="creditos" class="card-title text-center" style="color:#008900"></h2> 
+                                                    <div  id="qr-div"class="row m-b-0" style="align-content: center; text-align: center; display: inline;">
+                                                        <div id="qr-example" width="200px" height="auto">
+                                                        </div>
+                                                        <div id="previewImage" width="200px" height="auto" style="display:none;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="card-action green">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +226,7 @@
  <script src="JavaScript/DataTables.js"></script>
  <script src="bundle.js"></script>
  <script src="JavaScript/validar_formulario_firma.js"></script>
- <script src="JavaScript/wallet.js"></script>
+
  <!-- <script src="JavaScript/dialog-active.js"></script> -->
  <!-- <script src="JavaScript/sweetalert2.min.js"></script> -->
  <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
@@ -247,8 +275,8 @@
     <!-- Main JS-->
     <script src="JavaScript/main.js"></script>
     <script src="JavaScript/bundle.js"></script>
-    <script src="JavaScript/carga_firma.js"></script>
     <script src="JavaScript/recargar_cuenta.js"></script>
+    <script src="JavaScript/qr_gen.js"></script>
 
     <script>
     function click_basico(){
@@ -281,18 +309,19 @@
         console.log("Abriendo Modal");
         swal({
         title: 'Recargando Firma',
-        text: 'Esta a punto de recagar '+ valor_recarga +' Diplomas a la firma a nombre de: '+user[1],
-        type: 'success',
+        text: 'Estas a punto de recargar '+ valor_recarga +' firmas a nombre de '+user[0],
+        type: 'info',
         showCancelButton: true,
         confirmButtonColor: '#DD6B55',
         confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
         // cancelButtonText: false
       }).then((isConfirm) => {
         console.log("listo para recargar"+ user[4]+"el valor de: "+valor_recarga);
         let timerInterval
         swal({
             title: 'Recargando Firma',
-            text: 'En unos momentos tu firma estará recargada',
+            text: 'En un momento tu cuenta estará recargada',
             timer: 15000,
             timerProgressBar: true,
             onBeforeOpen: () => {

@@ -21,7 +21,7 @@ if ($size_imagen<=1000000) {
     if($type_imagen== "image/jpeg" || $type_imagen=="image/jpg" || $type_imagen=="image/png" || $type_imagen=="image/gif" ) {
 
         // Ruta de la carpeta destino del servidor
-        $carpeta_destino=$_SERVER['DOCUMENT_ROOT'] . '/solemneapp/uploads/'; // sube la imagen a una carpeta temporal
+        $carpeta_destino=$_SERVER['DOCUMENT_ROOT'] . '/IdBITSapp/uploads/'; // sube la imagen a una carpeta temporal
 
         // Movemos la imagen del directorio temporal al directorio escogido
         move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino.$usuario_sesion ); // mueve la imagen de la carpeta temporal, a la carpeta de destino

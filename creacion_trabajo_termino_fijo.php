@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solemne- Creacion Contrato - Trabajo término fijo</title>
+    <title>IdBITS- Creacion Contrato - Trabajo término fijo</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -42,7 +42,7 @@
             <nav class="transparent z-depth-1 " >
               <div class="nav-wrapper ">
                 <div class="col s12">
-                  <a href="home.php" class="breadcrumb">Solemne</a>
+                  <a href="home.php" class="breadcrumb">IdBITS</a>
                   <a href="#!" class="breadcrumb">Creacion Contrato - Trabajo término fijo</a>
                 </div>
               </div>
@@ -138,20 +138,44 @@
                               </div>
 
                               <div class="input-field col s12 m12 l6">
-                                <input name="salario" id="salario"  type="text" class="validate" required>
-                                <label for="salario" class="">Salario</label>
+                              <input type="text" name="salario" id="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="Salario Mínimo 877.803 COP" required>
+                                <label for="salario" id="label_salario" class="">Salario Mensual</label>
                                 <span class="helper-text" data-error="" data-success=""></span>
                               </div>
 
-                              <div class="input-field col s12 m12 l6">
+                              <!-- <div class="input-field col s12 m12 l6">
                                 <input name="periodo" id="periodo"  type="text" class="validate" required>
                                 <label for="periodo" class="">Periodo de pago</label>
                                 <span class="helper-text" data-error="" data-success=""></span>
+                              </div> -->
+                              <div class="input-field col s12 m12 l6">
+                                <input name="inicio" id="inicio"  type="date" class="validate" placeholder="" onchange="cal()" required>
+                                <label for="inicio" class="">Fecha de iniciación de labores</label>
+                                <span class="helper-text" data-error="" data-success=""></span>
                               </div>
 
                               <div class="input-field col s12 m12 l6">
-                                <input name="inicio" id="inicio"  type="text" class="validate" required>
-                                <label for="inicio" class="">Fecha de iniciación de labores</label>
+                                <input name="terminacion" id="terminacion"  type="date" class="validate" placeholder="" onchange="cal()" required>
+                                <label for="terminacion" class="">Fecha de Terminación de labores</label>
+                                <span class="helper-text" data-error="" data-success=""></span>
+                              </div>
+
+                              <div class="input-field col s12 m12 l6">
+                                <select name="periodo" id="type_c" class="form-control" type="text" required>
+                                  <option value="" disabled selected>Elija el tipo de pago</option>
+                                  <option value="Diario">Diario </option>
+                                  <option value="Semanal">Semanal</option>
+                                  <option value="Quincenal">Quincenal</option>
+                                  <option value="Mensual">Mensual</option>
+                                </select>
+                                <label>Periodo de pago</label>
+                              </div> 
+
+
+
+                              <div class="input-field col s12 m12 l6">
+                                <input name="duracion" id="duracion"  type="number" min="1" class="validate" placeholder="" onchange="cal_date()" required>
+                                <label for="inicio" class="">Duración en días</label>
                                 <span class="helper-text" data-error="" data-success=""></span>
                               </div>
 
@@ -162,8 +186,14 @@
                               </div>
 
                               <div class="input-field col s12 m12 l6">
-                                <input name="horario" id="horario"  type="text" class="validate" required>
-                                <label for="horario" class="">Horario de trabajo</label>
+                                <input name="ciudad" id="ciudad"  type="text" class="validate" required>
+                                <label for="ciudad" class="">Ciudad</label>
+                                <span class="helper-text" data-error="" data-success=""></span>
+                              </div>
+
+                              <div class="input-field col s12 m12 l6">
+                                <input name="horario" id="horario"  type="number" class="validate" min="1" max="8" required>
+                                <label for="horario" class="">Jornada Diaria de Trabajo en Horas</label>
                                 <span class="helper-text" data-error="" data-success=""></span>
                               </div>
 
@@ -179,10 +209,10 @@
                           <button class="btn waves-effect waves-light" name="action" type="submit" onclick = "this.form.action = 'contratolaboral.php'; this.form.submit()" >Crear Contrato</button>
                         </div>
                         <div class="center col l4">                               
-                          <button class="btn waves-effect waves-light" type="submit" onclick = "this.form.action = 'contratolaboral.php'; this.form.submit()" >Guardar Contrato</button>
+                          <button class="btn waves-effect waves-light" type="submit" style="display:none" onclick = "this.form.action = 'contratolaboral.php'; this.form.submit()" >Guardar Contrato</button>
                         </div>
                         <div class="center col l4">                               
-                          <button class="btn waves-effect waves-light" type="submit" onclick = "this.form.action = 'home.php'; this.form.submit()" >Cancelar Contrato</button>
+                          <a class="btn waves-effect waves-light" href="./home.php" >Cancelar Contrato</a>
                         </div>
 
                       </div>
@@ -200,7 +230,37 @@
             
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+  <script src="./JavaScript/moneyInput.js"></script>
  
+  <script>
+        function GetDays(){
+                var inicio = new Date(document.getElementById("inicio").value);
+                var terminacion = new Date(document.getElementById("terminacion").value);
+                console.log("calculo tiempo: ")
+                return parseInt((terminacion - inicio) / (24 * 3600 * 1000));
+        }
+        function GetDate(){
+                var inicio = new Date(document.getElementById("inicio").value);
+                var duracion = document.getElementById("duracion").value;
+                inicio.setDate(inicio.getDate()+parseInt(duracion));
+                return inicio;
+        }
+        function cal(){
+        if(document.getElementById("terminacion"))
+          {
+            document.getElementById("duracion").value=GetDays();
+          }
+        }  
+        function cal_date(){
+        if(document.getElementById("inicio"))
+          {
+            document.getElementById("terminacion").valueAsDate=GetDate();
+          }  
+        }
+
+    </script>
+
   <!-- this script initializes all Materialize javascript components -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -112,8 +112,10 @@
 
                                     if (empty($amigos)){
                                       $newarray=$ID;
+                                      $visibility="none";
                                     }else{
                                       $newarray = implode(", ", $amigos);
+                                      $visibility="inline";
                                     }
                                     
                                     
@@ -134,7 +136,7 @@
                                         $base->exec("SET CHARACTER SET utf8"); // se especifica que se está trabajando con caracteres UTF-8
                                         
                                         $sql="SELECT * FROM REGISTER WHERE ID IN ($newarray)";
-                                        $resultado=$base->prepare($sql); // se almacen el  objeto de tipo PDO statement que arroja $sql
+                                        $resultado=$base->prepare($sql); // se almacena el  objeto de tipo PDO statement que arroja $sql
                                         $resultado->execute (array());
 
                                         while ($fila=$resultado->fetch(PDO::FETCH_ASSOC)) {
@@ -144,7 +146,7 @@
 
                               <!-- contact starts -->
                                 <li>
-                                  <div class="user-view center col s6 m6 l3 "  >
+                                  <div class="user-view center col s6 m6 l3 "  style="display:<?php echo $visibility; ?>;" >
                                         <div class="file-field input-field ">
                                           <a href="#user"><img class="circle" style="height: 100px; width: 85px; margin:auto;" src="uploads/<?php echo $fila["IMAGE"];?>"></a>
                                         </div>
@@ -193,6 +195,7 @@
                                           $usuario=$_SESSION["usuario"];
                                           $visibility_1="none";
                                           $visibility_2="none";
+                                          $visibility_3="none";
 
                                           include 'php/conexion_ddbb.php';
                                           $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
@@ -208,9 +211,11 @@
                                             if($fila["FROM1"] ==$ID && $fila["STATE1"]== 1){
 
                                               array_push($pendientes,$fila["TO1"]);
-                                              $sol_state_a = "cancelar solicitud";
-                                              $visibility_1 = "inline";
+                                              $sol_state_c = "cancelar solicitud";
+                                              $visibility_0="inline";
+                                              $visibility_1 = "none";
                                               $visibility_2 = "none";
+                                              $visibility_3 = "inline";
 
                                             }
 
@@ -219,8 +224,10 @@
                                               array_push($pendientes,$fila["FROM1"]);
                                               $sol_state_a = "Aceptar solicitud";
                                               $sol_state_r = "Rechazar solicitud";
+                                              $visibility_0="inline";
                                               $visibility_1 = "inline";
                                               $visibility_2 = "inline";
+                                              $visibility_3 = "none";
 
                                             }
 
@@ -228,6 +235,7 @@
 
                                         if (empty($pendientes)){
                                           $newarray_pendientes=$ID;
+                                          $visibility_0="none";
                                         }else{
                                           $newarray_pendientes = implode(", ", $pendientes);
                                         }
@@ -262,7 +270,7 @@
 
                                   <!-- contact starts -->
                                     <li>
-                                      <div class="user-view center col s6 m6 l3 "  >
+                                      <div class="user-view center col s6 m6 l3 " style="display:<?php echo $visibility_0; ?>" >
                                             <div class="file-field input-field ">
                                               <a href="#user"><img class="circle" style="height: 100px; width: 85px; margin:auto;" src="uploads/<?php echo $image_pending;?>"></a>
                                             </div>
@@ -270,7 +278,7 @@
 
                                               <form action="php/aceptar_contacto.php" method="POST"> 
 
-                                                  <input type="hidden" name="ID_amigo" id="ID_amigo" value="<?php echo $ID_pending;?>">
+                                                <input type="hidden" name="ID_amigo" id="ID_amigo" value="<?php echo $ID_pending;?>">
                                                   
 
                                                 <div name="request_a" id="request_a" style="display:<?php echo $visibility_1; ?>;">
@@ -279,6 +287,10 @@
 
                                                 <div name="request_b" id="request_b" style="display:<?php echo $visibility_2; ?>;">
                                                   <br><input type="submit"  class="modal-close waves-effect waves-green btn" name="rechazar" id= "rechazar" value="<?php echo $sol_state_r; ?>">
+                                                </div>
+
+                                                <div name="request_c" id="request_c" style="display:<?php echo $visibility_3; ?>;">
+                                                  <br> <input type="submit"  class="modal-close waves-effect waves-green btn" name="cancelar" id="cancelar" value="<?php echo $sol_state_c; ?>"><br>
                                                 </div>
 
                                               </form> 
@@ -320,38 +332,28 @@
                                   <div class="modal-content">
                                     <h4>Agregar nuevo contacto</h4> 
                                   <!-- Auto complete starts -->
-                                    <div class="row">
-                                      <div class="col s12">
-                                        <div class="row">
-                                          <div class="input-field col s12">
-                                            <i class="material-icons prefix">textsms</i>
-                                            <input type="text" id="autocomplete-input" class="autocomplete no-autoinit">
-                                            <label for="autocomplete-input">Buscar contacto</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+
                                   <!-- Auto complete ends -->
                                   <!-- checkbox starts -->
-                                    <p>
+                                    <!-- <p>
                                       <label>
                                         <input type="checkbox" name="check" id="check" value="1"  />
                                         <span>¿La busqueda no arroja resultados?</span>
                                       </label>
-                                    </p>
+                                    </p> -->
                                   <!-- checkbox ends -->  
 
                                   <!-- Invitation starts -->
                                 
-                                  <div class="input-field col s12" id="name_div" name="name_div" style="display:none;">
+                                  <!-- <div class="input-field col s12" id="name_div" name="name_div" style="display:block;">
                                     <i class="material-icons prefix">portrait</i>
                                     <input name="name" id="name"  type="text" class="validate" >
                                     <label for="name" class="">Nombre de contacto</label>
                                     <span class="helper-text" data-error="" data-success=""></span>
-                                  </div>
+                                  </div> -->
 
 
-                                  <div class="input-field col s12" id="mail_div" name="mail_div" style="display:none;">
+                                  <div class="input-field col s12" id="mail_div" name="mail_div" style="display:block;">
                                     <i class="material-icons prefix">mail</i>
                                     <input name="mail" id="mail"  type="email" class="validate" >
                                     <label for="mail" class="">Correo electrónico de contacto</label>
@@ -359,8 +361,7 @@
                                   </div>
 
                                   <!-- Invitiation ends -->
-                                    
-                                  </div><br>
+                                  </div>
                                     <div class="modal-footer">
                                       <input type="submit" class="modal-close waves-effect waves-green btn" value="Enviar solicitud">
                                     </div>

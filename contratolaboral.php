@@ -53,6 +53,9 @@
     <?php $emp_salario= $_POST["salario"];?>
     <?php $emp_periodo= $_POST["periodo"];?>
     <?php $emp_inicio= $_POST["inicio"];?>
+    <?php $emp_terminacion= $_POST["terminacion"];?>
+    <?php $emp_duracion= $_POST["duracion"];?>
+    <?php $emp_ciudad= $_POST["ciudad"];?>
     <?php $emp_lugar= $_POST["lugar"];?>
     <?php $emp_horario= $_POST["horario"];?>
 
@@ -74,19 +77,10 @@
       <main >              
                <!-- in this section is the main content -->
 
-              <nav class="transparent" >
-                <div class="nav-wrapper">
-                  <div class="col s12">
-                    <a href="#!" class="breadcrumb">ContrApp</a>
-                    <a href="#!" class="breadcrumb">Mis contratos</a>
-                    <a href="#!" class="breadcrumb">Terminados</a>
-                  </div>
-                </div>
-              </nav>
                   
               <div class="container">
                <div class="masonry-row" style="position:relative;">
-               <a href="#" onclick="return xepOnline.Formatter.Format('prueba',{pageWidth:'216mm', pageHeight:'279mm'});">BUTTON</a>
+               <a href="#" style="display:block" onclick="return xepOnline.Formatter.Format('prueba',{pageWidth:'216mm', pageHeight:'279mm'});">BUTTON</a>
 
                 <!-- Contract Start -->
 
@@ -225,7 +219,15 @@
                             <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;">Fecha de terminaci&oacute;n de labores:</span></strong></p>
                             </td>
                             <td style="width: 289.625px; border-top: none; border-left: none; border-bottom: 1pt solid black; border-right: 1pt solid black; background: white; padding: 0cm 5.4pt; height: 17px;" colspan="2">
-                            <p><span style="font-size: 10.5pt; line-height: 110%;">&nbsp;</span></p>
+                            <p id="terminacion"><?php echo $emp_terminacion;?></p>
+                            </td>
+                            </tr>
+                            <tr style="height: 17.0pt;">
+                            <td style="width: 293.625px; border-right: 1pt solid black; border-bottom: 1pt solid black; border-left: 1pt solid black; border-image: initial; border-top: none; background: white; padding: 0cm 5.4pt; height: 17px;" colspan="2">
+                            <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;">Duración en días</span></strong></p>
+                            </td>
+                            <td style="width: 289.625px; border-top: none; border-left: none; border-bottom: 1pt solid black; border-right: 1pt solid black; background: white; padding: 0cm 5.4pt; height: 17px;" colspan="2">
+                            <p id="duracion"><?php echo $emp_duracion;?></p>
                             </td>
                             </tr>
                             <tr style="height: 16.0pt;">
@@ -241,12 +243,12 @@
                             <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;">Ciudad donde se contrat&oacute;:&nbsp;&nbsp; </span></strong></p>
                             </td>
                             <td style="width: 289.625px; border-top: none; border-left: none; border-bottom: 1pt solid black; border-right: 1pt solid black; background: white; padding: 0cm 5.4pt; height: 16px;" colspan="2">
-                            <p><span style="font-size: 10.5pt; line-height: 110%;">&nbsp;</span></p>
+                            <p id="ciudad"><?php echo $emp_ciudad;?></p>
                             </td>
                             </tr>
                             <tr style="height: 16.0pt;">
                             <td style="width: 293.625px; border-right: 1pt solid black; border-bottom: 1pt solid black; border-left: 1pt solid black; border-image: initial; border-top: none; background: white; padding: 0cm 5.4pt; height: 16px;" colspan="2">
-                            <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;">Horario de Trabajo</span></strong></p>
+                            <p><strong><span style="font-size: 10.5pt; line-height: 110%; color: black;">Jornada Laboral</span></strong></p>
                             </td>
                             <td style="width: 289.625px; border-top: none; border-left: none; border-bottom: 1pt solid black; border-right: 1pt solid black; background: white; padding: 0cm 5.4pt; height: 16px;" colspan="2">
                             <p id="horario"><?php echo $emp_horario;?></p>
@@ -686,15 +688,14 @@
                             </tr>
                             </tbody>
                             </table>
-                  </div>
-                  <div class="center col l4">                               
-                          <button class="btn waves-effect waves-light" name="action" type="submit" onclick="enviar_firmar()">Firmar y Enviar</button>
-                        </div>
-                        <div class="center col l4">                               
-                          <button class="btn waves-effect waves-light" type="button">Guardar Borrador</button>
-                        </div>
-                        <div class="center col l4">                               
-                          <button class="btn waves-effect waves-light" type="button" href="home.php">Cancelar Contrato</button>
+                    <div class="row text-center">
+                      <div class=col-6>
+                        <button class="btn waves-effect waves-light" name="action" type="submit" onclick="enviar_firmar()">Firmar y Enviar</button>
+                      </div>   
+                      <div class=col-6>
+                        <button class="btn waves-effect waves-light" type="button" href="home.php">Cancelar Contrato</button>
+                      </div>                               
+                    </div>
                   </div>
                  </div>
                 </div>
@@ -711,7 +712,7 @@
                        </div>
                        <div class="modal-body">
                            <p>
-                               Ingrese su firma digital con la respectiva contraseña para hacer oficial el Contrato y enviarlo para su firma a la contraparte.
+                               Ingrese su firma digital con la respectiva contraseña para hacer oficial el Contrato y solicitar al trabajador su firma.
                            </p>
                            <form id="myform">
                                 <input id="myfile" name="file" type="file" />

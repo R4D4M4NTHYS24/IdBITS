@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solemne - Home</title>
+    <title>IdBITS - Home</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,10 +22,32 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <!-- Compiled and minified JavaScript Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+        <!-- Fontfaces CSS-->
+        <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
     
 </head>
 
-<body class="grey lighten-4">
+<body class="grey lighten-4"  onload="generar_qr() , consultar_balance() ">
+<!-- onload="consultar_balance()" -->
 
     <!-- php file to sesion start --> 
     <?php include 'php/sesion.php'; ?>
@@ -52,43 +74,27 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
+                            <br>
                                 <h2 class="title-1 m-b-25">Verificar Firma</h2>
                                 <div class="col-lg-12">
-                                    <div class="card">
-                                        <div class="card-header">Ingrese la Firma que desea Verificar</div>
-                                        <div class="card-body card-block">
-                                            <form id="myform">
-                                                <input id="myfile" name="file" type="file" />
-                                            </form>
-                                        </div>
-                                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="consultar_saldo()">Verificar</button>
-                                    </div>
-                                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show" id="alert_recarga" style="display:none;">
-                                        <span id="texto_alert" class="badge badge-pill badge-success">Confirmada</span>
-                                        Su firma tiene n saldo
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show" id="alert_sin_saldo" style="display:none;">
-                                        <span class="badge badge-pill badge-danger">Sin Saldo</span>
-                                        Su firma aún no contiene saldo
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                <div class="col-12"> 
+                                <div class="col s12 center">
+                        
+                              <form action="php/nuevo_contacto.php" method="POST"  >
+                                    <h2>Buscar Firma de Usuario por correo electrónico</h2> 
+
+                                  <div class="input-field col s12 row" id="mail_div" name="mail_div" style="display:block;">
+                                    <i class="material-icons prefix">mail</i>
+                                    <input name="mail" id="mail"  type="email" class="validate" >
+                                    <label for="mail" class="">Correo electrónico de Usuario</label>
+                                    <span class="helper-text" data-error="" data-success=""></span>
+                                    <input type="submit" class="modal-close waves-effect waves-green btn" value="Buscar">
+                                  </div>
+                                  </div>
+                              </form>
+                            </div><br>
+                    </div>  
+                                  
             <!-- END MAIN CONTENT-->
 
 
@@ -115,12 +121,33 @@
 
  <!-- Perform DataTables -->
  <script src="JavaScript/DataTables.js"></script>
- <script src="JavaScript/bundle.js"></script>
+ <script src="bundle.js"></script>
  <script src="JavaScript/validar_formulario_firma.js"></script>
- <script src="JavaScript/wallet.js"></script>
+
  <!-- <script src="JavaScript/dialog-active.js"></script> -->
  <!-- <script src="JavaScript/sweetalert2.min.js"></script> -->
  <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+
+ <!-- <script>
+    function wallet(){
+      console.log("Creando Billetera") ;
+      password = document.getElementById("password").value;
+      account = web3.eth.accounts.create();
+      owner = account.address;
+      //Archivo Json con las llaves cifradas
+      jsonf = web3.eth.accounts.encrypt(account.privateKey, password);
+      //-----Almacenar JSON en la base de datos, asociada al perfil del usuario
+      // document.getElementById("json").innerHTML =jsonf.id;
+      //Cuando el usuario requiera firmar una transacciÃ³n, se preguntara por su password y se desbloqueara su llave privada
+      //var account_to_sign=web3.eth.accounts.decrypt(json,"password");
+      var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonf));
+      $('<a id="descargar" target="_blank" href="data:' + data + '" download="Firma '+institucion.value+' ContrApp.json"></a>').appendTo('#container');
+      var descarga = document.getElementById('descargar');
+      descarga.click();
+    }
+ </script> -->
+
+<!-- this script initializes Dropdown for settings -->
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -144,29 +171,11 @@
 
     <!-- Main JS-->
     <script src="JavaScript/main.js"></script>
-    <script src="bundle.js"></script>
-    <script src="JavaScript/carga_firma.js"></script>
-    <script src="JavaScript/consultar_firma.js"></script>
- <!-- <script>
-    function wallet(){
-      console.log("Creando Billetera") ;
-      password = document.getElementById("password").value;
-      account = web3.eth.accounts.create();
-      owner = account.address;
-      //Archivo Json con las llaves cifradas
-      jsonf = web3.eth.accounts.encrypt(account.privateKey, password);
-      //-----Almacenar JSON en la base de datos, asociada al perfil del usuario
-      // document.getElementById("json").innerHTML =jsonf.id;
-      //Cuando el usuario requiera firmar una transacciÃ³n, se preguntara por su password y se desbloqueara su llave privada
-      //var account_to_sign=web3.eth.accounts.decrypt(json,"password");
-      var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonf));
-      $('<a id="descargar" target="_blank" href="data:' + data + '" download="Firma '+institucion.value+' ContrApp.json"></a>').appendTo('#container');
-      var descarga = document.getElementById('descargar');
-      descarga.click();
-    }
- </script> -->
+    <script src="JavaScript/bundle.js"></script>
+    <script src="JavaScript/recargar_cuenta.js"></script>
+    <script src="JavaScript/qr_gen.js"></script>
 
-<!-- this script initializes Dropdown for settings -->
+
  <script>
   document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.dropdown-trigger');

@@ -21,8 +21,8 @@
                               $DATE = $fila["DATE"];
                               $COMPANY = $fila["COMPANY"];
                               $ID = $fila["ID"];
-                            
-
+                              $PBK = $fila["PBK"];                       
+                              $ruta_firma = $fila["FIRMA"];
                           }
 
                       } catch (Exception $e){

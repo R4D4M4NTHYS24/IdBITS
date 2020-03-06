@@ -5,7 +5,7 @@
           <nav class="navbar white z-depth-0" style=" border-bottom: 1px solid #cfd8dc" >
             <div class="nav-wrapper transparent" >
               <a href="#" data-target="slide-out"  class="sidenav-trigger"><i style="color:grey;" class="material-icons">menu</i></a>
-              <a id="brand_logo" href="home.php" style="color:grey; left:310px; font-size:25px;" class="brand-logo">Solemne</a>
+              <a id="brand_logo" href="home.php" style="color:grey; left:310px; font-size:25px;" class="brand-logo">IdBITS</a>
 
               <ul class="right hide-on-med-and-down">
                            
@@ -39,7 +39,7 @@
               <ul id="slide-out" class="sidenav sidenav-fixed z-depth-0"  style=" border-right: 1px solid #cfd8dc"  >
                 <li style="border-bottom: 1px solid #cfd8dc; ">
                   <a  style="min-height: 58px; font-size:30px; color:grey; margin-top:5px; " class=" center brand-logo teal transparent z-depth-0" href="home.php">
-                    Solemne
+                    IdBITS
                   </a>
                 </li> 
 
@@ -72,8 +72,21 @@
                   <li>
                   <div class="collapsible-header" > <a href="contactos.php" style="width: 350px; color:black;" ><i class="material-icons">contacts</i>Contactos</a> </div>
                   </li>
-                </ul> 
+                </ul>
+
                 <ul class="collapsible">
+                  <li>
+                  <div class="collapsible-header" > <a href="recargar_firma.php" style="width: 350px; color:black;" ><i class="material-icons">account_balance_wallet</i>   Recargar Firma</a> </div>
+                  </li>
+                </ul> 
+
+                <ul class="collapsible">
+                  <li>
+                  <div class="collapsible-header" > <a href="verificar_firma.php" style="width: 350px; color:black;" ><i class="material-icons">search</i>Verificar Firmas</a> </div>
+                  </li>
+                </ul> 
+
+                <!-- <ul class="collapsible">
                 <li>
                     <div class="collapsible-header"> <span><i class="material-icons">payment</i>Gestionar Firma</span> </div>
                      <div class="collapsible-body">
@@ -84,7 +97,7 @@
                       </ul>
                      </div>
                   </li>
-                </ul> 
+                </ul>  -->
                 
                
 
