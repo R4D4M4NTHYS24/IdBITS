@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solemne - Login</title>
+    <title>IdBITS</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -13,14 +13,14 @@
      
 </head>
 
-<body  background="images/contract4.jpg">
+<body  background="images/IDWall.jpg">
   <main>  
     <div class="container">  
       <div class="row center">
         <div class="col s12 m6 l4  offset-m3 offset-l4">
           <div class="card">
             <div class="card-content" >
-              <span class="card-title " style="font-size:36px;"><img src="images/contract.png" height="50" width="50"><br><b>Solemne</b></span>
+              <span class="card-title " style="font-size:36px;"><img src="images/unlock-id.png" height="50" width="50"><br><b>IdBITS</b></span>
               <h6 style="color: grey;">Ingresa tus datos</h6><br><br>
                 
                 <div class="row">
